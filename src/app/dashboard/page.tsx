@@ -1,14 +1,11 @@
-import Button from '@/components/ui/Button';
-import { FC } from 'react';
+import { getServerSession } from 'next-auth';
 
-interface pageProps {}
+import { authOptions } from '@/lib/auth';
 
-const page: FC = () => {
-  return (
-    <Button variant="default" size={'sm'}>
-      Hello
-    </Button>
-  );
+const page = async () => {
+  const session = await getServerSession(authOptions);
+
+  return <pre>{JSON.stringify(session)}</pre>;
 };
 
 export default page;
