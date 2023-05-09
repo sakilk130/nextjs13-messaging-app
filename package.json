@@ -2,20 +2,11 @@
   "name": "nextjs13-messaging-app",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": ">=18.14.1",
-    "npm": ">=9.3.1",
-    "yarn": "please-use-npm",
-    "pnpm": "please-use-npm"
-  },
   "scripts": {
     "dev": "next dev",
-    "dev:turbo": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "prepare": "husky install",
-    "prettier": "prettier --write ."
+    "lint": "next lint"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.1.0",
@@ -43,8 +34,5 @@
     "tailwindcss": "3.3.2",
     "typescript": "5.0.4",
     "zod": "^3.21.4"
-  },
-  "devDependencies": {
-    "husky": "^8.0.3"
   }
 }
