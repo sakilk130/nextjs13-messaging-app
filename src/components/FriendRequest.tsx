@@ -21,7 +21,7 @@ const FriendRequest: FC<FriendRequestProps> = ({
 
   const acceptFriend = useCallback(
     async (senderId: string) => {
-      axios.post('/api/requests/accept', {
+      axios.post('/api/friends/accept', {
         id: senderId,
       });
       setFriendRequests((prev) =>
@@ -34,7 +34,7 @@ const FriendRequest: FC<FriendRequestProps> = ({
 
   const denyFriend = useCallback(
     async (senderId: string) => {
-      axios.post('/api/requests/deny', {
+      axios.post('/api/friends/deny', {
         id: senderId,
       });
       setFriendRequests((prev) =>
