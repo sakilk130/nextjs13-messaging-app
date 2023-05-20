@@ -11,6 +11,7 @@ import SignOutButton from '@/components/SignOutButton';
 import { getFriendsById } from '@/helpers/get-friends-by-id';
 import { fetchRedis } from '@/helpers/redis';
 import { authOptions } from '@/lib/auth';
+import MobileChatLayout from '@/components/MobileChatLayout';
 
 interface LayoutProps {
   children: ReactNode;
@@ -45,6 +46,14 @@ const Layout = async ({ children }: LayoutProps) => {
 
   return (
     <div className="flex w-full h-screen">
+      <div className="md:hidden">
+        <MobileChatLayout
+          friends={friends}
+          session={session}
+          sidebarOptions={sidebarOptions}
+          unseenRequestCount={unseenRequestCount}
+        />
+      </div>
       <div className="flex-col hidden w-full h-full max-w-xs px-6 overflow-y-auto bg-white border-r border-gray-200 md:flex grow gap-y-5">
         <Link href="/dashboard" className="flex items-center h-16 shrink-0">
           <Icons.Logo className="w-auto h-8 text-indigo-600" />
