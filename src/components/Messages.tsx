@@ -85,7 +85,7 @@ const Messages: FC<MessagesProps> = ({
                 <Image
                   fill
                   src={
-                    isCurrentUser ? (sessionImg as string) : chatPartner.image
+                    isCurrentUser ? (sessionImg as string) : chatPartner?.image
                   }
                   alt="Profile picture"
                   referrerPolicy="no-referrer"
