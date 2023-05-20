@@ -15,23 +15,26 @@ const page = async ({}) => {
 
   const friends = await getFriendsById(session?.user.id);
 
-  const friendsWithLastMessage = await Promise.all(
-    friends.map(async (friend) => {
-      const [lastMessageRaw] = (await fetchRedis(
-        'zrange',
-        `chat:${chatHrefConstructor(session?.user.id, friend.id)}:messages`,
-        -1,
-        -1
-      )) as string[];
+  const friendsWithLastMessage: any = [];
 
-      const lastMessage = JSON.parse(lastMessageRaw) as Message;
+  // FIXME: data fetching issue from redis
+  // await Promise.all(
+  //   friends.map(async (friend) => {
+  //     const [lastMessageRaw] = (await fetchRedis(
+  //       'zrange',
+  //       `chat:${chatHrefConstructor(session?.user.id, friend.id)}:messages`,
+  //       -1,
+  //       -1
+  //     )) as string[];
 
-      return {
-        ...friend,
-        lastMessage,
-      };
-    })
-  );
+  //     const lastMessage = JSON.parse(lastMessageRaw) as Message;
+
+  //     return {
+  //       ...friend,
+  //       lastMessage,
+  //     };
+  //   })
+  // );
 
   return (
     <div className="container py-12">
@@ -39,7 +42,7 @@ const page = async ({}) => {
       {friendsWithLastMessage.length === 0 ? (
         <p className="text-sm text-zinc-500">Nothing to show here...</p>
       ) : (
-        friendsWithLastMessage.map((friend) => (
+        friendsWithLastMessage.map((friend: any) => (
           <div
             key={friend.id}
             className="relative p-3 border rounded-md bg-zinc-50 border-zinc-200"
